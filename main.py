@@ -18,3 +18,38 @@ def import_data(data_file):
 		# generate a certificate
 		pdf_file_name = course_name + '_' + last_name + first_name + '.pdf'
 		generate_certificate(first_name, last_name, pdf_file_name)
+
+def generate_certificate(first_name, last_name, course_name, pdf_file_name):
+	attendee_name = first_name + ' ' + last_name
+	# define canvas to draw pdf
+	c = canvas.Canvas(pdf_file_name, pagesize=landscape(letter))
+	# header
+	c.setFont('Helvetica', 48, leading=None) # fonts must be on your machine
+	c.drawCentredString(415, 500, "Certificate of Completion") # define a center point (x, y) and draw text there
+	# sub-header
+	c.setFont('Helvetica', 24, leading=None)
+	c.drawCentredString(415, 450, "This certificate is presented to:")
+	# attendee_name
+	c.setFont('Helvetica-Bold', 34, leading=None)
+	c.drawCentredString(415, 495, attendee_name)
+	# body
+	c.setFont('Helvetica', 24, leading=None)
+	c.drawCentredString(415, 350, "for completing the following course:")
+	# course
+	c.setFont('Helvetica', 20, leading=None)
+	c.drawCentredString(415, 310, course_name)
+	# seal image
+	seal = 'lambda_logo.jpg'
+	c.drawImage(350, 50, width=None, height=None)
+
+	c.showPage() # creates, renders, and closes a page one time
+
+	c.save() # save pdf(s)
+
+import_data(data_file)
+
+
+
+
+
+
