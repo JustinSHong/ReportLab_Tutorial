@@ -1,6 +1,6 @@
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
-from reportlab.lib.pagesize import landscape
+from reportlab.lib.pagesizes import landscape
 from reportlab.platypus import Image
 
 import csv
@@ -9,7 +9,7 @@ data_file = 'data.csv' # hold a reference to data file
 
 # import and parse data from data.csv
 def import_data(data_file):
-	attendee_data = csv.reader(open(data_file, "rb"))
+	attendee_data = csv.reader(open(data_file, newline=''))
 	for row in attendee_data:
 		# pertinent data points for pdf file
 		last_name = row[0]
@@ -40,7 +40,7 @@ def generate_certificate(first_name, last_name, course_name, pdf_file_name):
 	c.drawCentredString(415, 310, course_name)
 	# seal image
 	seal = 'lambda_logo.jpg'
-	c.drawImage(350, 50, width=None, height=None)
+	c.drawImage(seal, 350, 50, width=None, height=None)
 
 	c.showPage() # creates, renders, and closes a page one time
 
