@@ -17,7 +17,7 @@ def import_data(data_file):
 		course_name = row[2]
 		# generate a certificate
 		pdf_file_name = course_name + '_' + last_name + first_name + '.pdf'
-		generate_certificate(first_name, last_name, pdf_file_name)
+		generate_certificate(first_name, last_name, course_name, pdf_file_name)
 
 def generate_certificate(first_name, last_name, course_name, pdf_file_name):
 	attendee_name = first_name + ' ' + last_name
@@ -31,7 +31,7 @@ def generate_certificate(first_name, last_name, course_name, pdf_file_name):
 	c.drawCentredString(415, 450, "This certificate is presented to:")
 	# attendee_name
 	c.setFont('Helvetica-Bold', 34, leading=None)
-	c.drawCentredString(415, 495, attendee_name)
+	c.drawCentredString(415, 395, attendee_name)
 	# body
 	c.setFont('Helvetica', 24, leading=None)
 	c.drawCentredString(415, 350, "for completing the following course:")
