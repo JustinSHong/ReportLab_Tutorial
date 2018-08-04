@@ -40,7 +40,7 @@ def generate_certificate(first_name, last_name, course_name, pdf_file_name):
 	c.drawCentredString(415, 310, course_name)
 	# seal image
 	seal = 'lambda_logo.jpg'
-	c.drawImage(seal, 350, 50, width=None, height=None)
+	c.drawImage(seal, 300, 50, width=None, height=None)
 
 	c.showPage() # creates, renders, and closes a page one time
 
